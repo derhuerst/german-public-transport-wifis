@@ -1,0 +1,1 @@
+All data in the german-public-transport-wifis project is made available under the Public Domain Dedication and License v1.0 whose full text can be found at: http://www.opendatacommons.org/licenses/pddl/1.0/

@@ -1,0 +1,34 @@
+{
+	"name": "german-public-transport-wifis",
+	"description": "Wireless access points at German public transport stations.",
+	"version": "1.0.0",
+	"main": "index.js",
+	"files": [
+		"index.js",
+		"data.ndjson",
+		"example.js"
+	],
+	"keywords": [
+		"public transport",
+		"transit",
+		"wifi",
+		"mac",
+		"bssid"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/german-public-transport-wifis",
+	"repository": "derhuerst/german-public-transport-wifis",
+	"bugs": "https://github.com/derhuerst/german-public-transport-wifis/issues",
+	"license": "PDDL-1.0",
+	"engines": {
+		"node": ">=8"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {
+	},
+	"scripts": {
+		"test": "env NODE_ENV=dev node test.js",
+		"prepublishOnly": "npm test"
+	}
+}
