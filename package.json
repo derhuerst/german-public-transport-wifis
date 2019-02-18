@@ -26,6 +26,8 @@
 	"dependencies": {
 	},
 	"devDependencies": {
+		"ndjson": "^1.5.0",
+		"pump": "^3.0.0"
 	},
 	"scripts": {
 		"test": "env NODE_ENV=dev node test.js",
