@@ -26,8 +26,15 @@
 	"dependencies": {
 	},
 	"devDependencies": {
+		"chalk": "^2.4.2",
+		"cli-autocomplete": "^0.4.1",
+		"db-hafas": "^4.0.0",
 		"ndjson": "^1.5.0",
-		"pump": "^3.0.0"
+		"number-prompt": "^0.2.0",
+		"pump": "^3.0.0",
+		"range-prompt": "^0.1.1",
+		"switch-prompt": "^0.1.0",
+		"text-prompt": "^0.1.2"
 	},
 	"scripts": {
 		"test": "env NODE_ENV=dev node test.js",
