@@ -34,7 +34,8 @@
 		"pump": "^3.0.0",
 		"range-prompt": "^0.1.1",
 		"switch-prompt": "^0.1.0",
-		"text-prompt": "^0.1.2"
+		"text-prompt": "^0.1.2",
+		"wifi-channels": "^1.0.1"
 	},
 	"scripts": {
 		"test": "env NODE_ENV=dev node test.js",

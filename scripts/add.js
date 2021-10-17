@@ -7,6 +7,7 @@ const autocompletePrompt = require('cli-autocomplete')
 const switchPrompt = require('switch-prompt')
 const textPrompt = require('text-prompt')
 const rangePrompt = require('range-prompt')
+const wifiChannels = require('wifi-channels/channels.json')
 
 const ibnrRegex = /\d{7,}/
 const hafas = createHafas('german-public-transport-wifis')
@@ -48,6 +49,12 @@ const queryNumber = (msg) => {
 		throw new Error('rejected with ' + val)
 	})
 }
+const queryText = (msg) => {
+	return query(textPrompt, chalk.bold(msg))
+	.catch(val => {
+		throw new Error('rejected with ' + val)
+	})
+}
 const macLikeRegex = /([0-9a-f]{2}\:){5}([0-9a-f]{2})/i
 const queryMacLike = (msg) => {
 	return queryText(msg)
@@ -56,12 +63,21 @@ const queryMacLike = (msg) => {
 		return val.toLowerCase().trim()
 	})
 }
-const queryText = (msg) => {
-	return query(textPrompt, chalk.bold(msg))
-	.catch(val => {
-		throw new Error('rejected with ' + val)
-	})
+
+const channels = [].concat(
+	...Object.values(wifiChannels)
+	.map(byStd => Object.entries(byStd).map(([name, spec]) => ({...spec, name})))
+).sort((a, b) => a.name - b.name)
+const queryWifiChannel = (msg) => {
+	const suggest = (query) => {
+		const res = channels.filter(c => c.name.slice(0, query.length) === query)
+		return Promise.resolve(res.map(({name, lower, upper}) => {
+			return {value: name, title: `${name} ${lower}-${upper}MHz`}
+		}))
+	}
+	return query(autocompletePrompt, msg, suggest)
 }
+
 const queryRange = (msg, min, max, step) => {
 	return query(rangePrompt, chalk.bold(msg), {min, max, step, value: min})
 	.catch(val => {
@@ -74,7 +90,7 @@ const queryRange = (msg, min, max, step) => {
 	// todo: query `ap.stop`
 	const name = await queryText('Name of the WiFi?')
 
-	let mac = null, bssid = null
+	let mac = null, bssid = null, channel = null
 	if (await queryBoolean('Do you know its MAC address?')) {
 		mac = await queryMacLike('MAC address')
 	}
@@ -83,6 +99,9 @@ const queryRange = (msg, min, max, step) => {
 	}
 	if (!mac && !bssid) {
 		return console.error(chalk.red('Provide either the MAC address or the BSSID.'))
+	}
+	if (await queryBoolean('Do you know its channel?')) {
+		channel = await queryWifiChannel('channel')
 	}
 
 	const platforms = []
