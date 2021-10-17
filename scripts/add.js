@@ -8,6 +8,8 @@ const switchPrompt = require('switch-prompt')
 const textPrompt = require('text-prompt')
 const rangePrompt = require('range-prompt')
 const wifiChannels = require('wifi-channels/channels.json')
+const {join: pathJoin} = require('path')
+const {createWriteStream} = require('fs')
 
 const ibnrRegex = /\d{7,}/
 const hafas = createHafas('german-public-transport-wifis')
@@ -128,11 +130,14 @@ const queryRange = (msg, min, max, step) => {
 	}
 	const operator = (await queryText('operator (optional)')) || null
 
-	process.stdout.write(JSON.stringify({
+	const pathToData = pathJoin(__dirname, '..', 'data.ndjson')
+	const data = createWriteStream(pathToData, {flags: 'a'})
+
+	data.end(JSON.stringify({
 		station, location, operator,
 		name, mac, bssid,
 		platforms
-	}))
+	}) + '\n')
 })()
 .catch((err) => {
 	console.error(chalk.red(err + ''))
