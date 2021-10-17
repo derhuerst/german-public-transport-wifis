@@ -21,7 +21,7 @@
 	"bugs": "https://github.com/derhuerst/german-public-transport-wifis/issues",
 	"license": "PDDL-1.0",
 	"engines": {
-		"node": ">=8"
+		"node": ">=14"
 	},
 	"dependencies": {
 	},
