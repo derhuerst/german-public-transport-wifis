@@ -1,7 +1,7 @@
 {
 	"name": "german-public-transport-wifis",
 	"description": "Wireless access points at German public transport stations.",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"main": "index.js",
 	"files": [
 		"index.js",

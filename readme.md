@@ -1,12 +1,10 @@
 # german-public-transport-wifis
 
-Crowd-sourced database of **fringerprints of [wireless access points](https://en.wikipedia.org/wiki/Wireless_access_point) at German public transport stations.**
+Crowd-sourced database of **fingerprints of [wireless access points](https://en.wikipedia.org/wiki/Wireless_access_point) at German public transport stations.**
 
 [![npm version](https://img.shields.io/npm/v/german-public-transport-wifis.svg)](https://www.npmjs.com/package/german-public-transport-wifis)
 [![build status](https://api.travis-ci.org/derhuerst/german-public-transport-wifis.svg?branch=master)](https://travis-ci.org/derhuerst/german-public-transport-wifis)
-![ISC-licensed](https://img.shields.io/github/license/derhuerst/german-public-transport-wifis.svg)
-[![chat with me on Gitter](https://img.shields.io/badge/chat%20with%20me-on%20gitter-512e92.svg)](https://gitter.im/derhuerst)
-[![support me on Patreon](https://img.shields.io/badge/support%20me-on%20patreon-fa7664.svg)](https://patreon.com/derhuerst)
+![public-domain-licensed](https://img.shields.io/github/license/derhuerst/german-public-transport-wifis.svg)
 
 
 ## Installation
